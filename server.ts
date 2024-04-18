@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const server = http.createServer(app);
 const corsParams = {
-  origin: ["http://localhost:8080"],
+  origin: ["http://localhost:8080", "https://main--sharejscodef.netlify.app/"],
 };
 const io = new SocketIOServer(server, {
   cors: corsParams,
