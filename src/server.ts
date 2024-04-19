@@ -18,7 +18,16 @@ const corsParams = {
     "https://main--sharejscodef.netlify.app/*",
   ],
   methods: ["GET", "POST", "DELETE", "PUT"],
-  allowedHeader: ["Content-Type", "Authorization"],
+  allowedHeader: [
+    "Content-Type",
+    "Authorization",
+    "X-Content-Type-Options",
+    "Accept",
+    "X-Requested-With",
+    "Origin",
+    "Access-Control-Request-Method",
+    "Access-Control-Request-Headers",
+  ],
 };
 const io = new SocketIOServer(server, {
   cors: corsParams,
