@@ -12,11 +12,12 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const server = http.createServer(app);
 const corsParams = {
-  origin: [
-    "http://localhost:8080",
-    "https://main--sharejscodef.netlify.app",
-    "https://main--sharejscodef.netlify.app/*",
-  ],
+  origin: ["*"],
+  // origin: [
+  //   "http://localhost:8080",
+  //   "https://main--sharejscodef.netlify.app",
+  //   "https://main--sharejscodef.netlify.app/*",
+  // ],
   methods: ["GET", "POST", "DELETE", "PUT"],
   allowedHeader: [
     "Content-Type",
@@ -31,6 +32,15 @@ const corsParams = {
 };
 const io = new SocketIOServer(server, {
   cors: corsParams,
+});
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
 });
 
 app.use(cors(corsParams));
